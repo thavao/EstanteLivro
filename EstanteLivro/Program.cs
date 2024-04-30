@@ -15,7 +15,6 @@ int Menu()
     return int.Parse(Console.ReadLine());
 }
 
-
 Livro CadastrarLivro()
 {
     string titulo, autor, editora, isbn;
@@ -63,6 +62,17 @@ void ImprimirEstante()
         Console.WriteLine("Estante vazia...");
 }
 
+void ApresentarIndices()
+{
+    if (indice > 0)
+    {
+        Console.Write("Indices: ");
+
+        for (int i = 0; i < indice; i++)
+            Console.Write(i + " ");
+        Console.WriteLine();
+    }
+}
 void BuscarLivro(int i)
 {
     if (i >= 0 && i < indice)
@@ -82,6 +92,7 @@ do
             ImprimirEstante();
             break;
         case 3:
+            ApresentarIndices();
             Console.Write("Informe o indice do livro: ");
             BuscarLivro(int.Parse(Console.ReadLine()));
             break;
