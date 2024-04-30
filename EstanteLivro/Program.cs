@@ -65,7 +65,7 @@ void ImprimirEstante()
 
 void BuscarLivro(int i)
 {
-    if (i > 0 && i < indice)
+    if (i >= 0 && i < indice)
         estante[i].ImprimirLivro();
     else
         Console.WriteLine("O indice informado não é válido.");
