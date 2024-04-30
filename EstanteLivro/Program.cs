@@ -42,24 +42,33 @@ Livro CadastrarLivro()
 }
 void AdicionarLivroNaEstante()
 {
-    do
-    {
-        Livro l = CadastrarLivro();
-        estante[indice] = l;
-        indice++;
-        Console.WriteLine("Deseja cadastrar um novo livro?");
-        op = int.Parse(Console.ReadLine());
-    } while (op != 0 && indice < 10);
+    if (indice < 10)
+        do
+        {
+            Livro l = CadastrarLivro();
+            estante[indice] = l;
+            indice++;
+            Console.WriteLine("Deseja cadastrar um novo livro?");
+            op = int.Parse(Console.ReadLine());
+        } while (op != 0 && indice < 10);
+    else
+        Console.WriteLine("Sua estante está cheia. Não é possível adicionar mais livros.");
 }
 void ImprimirEstante()
 {
-    for (int i = 0; i < indice; i++)
-        estante[i].ImprimirLivro();
+    if (indice > 0)
+        for (int i = 0; i < indice; i++)
+            estante[i].ImprimirLivro();
+    else
+        Console.WriteLine("Estante vazia...");
 }
 
 void BuscarLivro(int i)
 {
-    estante[i].ImprimirLivro();
+    if (i > 0 && i < indice)
+        estante[i].ImprimirLivro();
+    else
+        Console.WriteLine("O indice informado não é válido.");
 }
 
 do
@@ -84,10 +93,7 @@ do
             Console.WriteLine("Opção Inválida!");
             break;
     }
+    Console.WriteLine("Pressione Enter para continuar...");
+    Console.ReadLine();
 } while (true);
 
-
-
-
-
-Console.ReadLine();
